@@ -4,7 +4,8 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 
 
-//ec575a3d1776c24a1e477dba26a23004
+const hash =  "bd0722d5750b6362d5ba0212ca36726b"
+//5fc40be1cc147ce1a86fb3ab1df836b1
 
 function App() {
 
@@ -13,10 +14,14 @@ function App() {
 
   useEffect(()=>{
     const fetch = async()=>{
-      const result = await axios(`http://gateway.marvel.com/v1/public/comics?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150`)
+      const result = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=344d40df0c8cc373141c1dc321fae9cf&hash=${hash}`);
+      console.log(result.data);
+      setItems(result.data);
+      setLoading(false);
     }
+    fetch();
 
-  })
+  },[])
   return (
     <div className="container">
       <Header/>
